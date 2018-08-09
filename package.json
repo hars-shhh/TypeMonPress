@@ -6,10 +6,12 @@
   "author": "Aayush Kapoor <xeoneux@icloud.com>",
   "license": "MIT",
   "scripts": {
-    "start": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon dist\"",
-    "debug": "tsc && concurrently -k -p \"{name} >>>\" -n \"TS,NODE\" -c \"cyan.bold,yellow.bold\" \"tsc -w\" \"nodemon --inspect dist\"",
+    "start": "nodemon -e ts -w . -x npm run watch",
+    "debug": "nodemon -e ts -w . -x npm run watch:debug",
     "build": "apidoc -o dist/docs -e node_modules && tsc",
-    "cover": "nyc mocha test/**.ts"
+    "cover": "nyc mocha test/**.ts",
+    "watch": "ts-node ./index.ts",
+    "watch:debug": "ts-node --inspect ./index.ts"
   },
   "dependencies": {
     "acl": "^0.4.11",
@@ -61,7 +63,6 @@
     "@types/winston": "^2.3.6",
     "apidoc": "^0.17.6",
     "chai": "^4.1.2",
-    "concurrently": "^3.5.0",
     "mocha": "^3.5.3",
     "nyc": "^11.2.1",
     "supertest": "^3.0.0",
