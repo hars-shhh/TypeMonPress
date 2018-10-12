@@ -34,7 +34,10 @@ export class Server {
       logger.error(`DB connection error on port ${mongo.port}`);
       process.exit(1);
     });
-    await mongoose.connect(mongo.host, { useMongoClient: true });
+    await mongoose.connect(
+      mongo.host || "",
+      { useNewUrlParser: true }
+    );
 
     return mongoose.connection.db;
   }
@@ -66,7 +69,6 @@ export class Server {
     await import("../config/acl");
     await import("../config/passport");
 
-    
     app.use(passport.initialize());
     app.use(passport.session());
 
@@ -78,7 +80,6 @@ export class Server {
 
     const { router } = await import("./routes");
     app.use(route, router);
-
 
     return app;
   }
