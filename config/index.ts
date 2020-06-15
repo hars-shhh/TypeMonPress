@@ -23,4 +23,9 @@ if (error) {
 const mongo = { host: env.MONGO_HOST, port: env.MONGO_PORT };
 const node = { env: env.NODE_ENV, port: env.PORT };
 
-export { mongo, node };
+const deepstreamConfig = {
+  DEEPSTREAM_BT_HOST: process.env.DEEPSTREAM_BT_HOST || "localhost",
+  DEEPSTREAM_BT_PORT: process.env.DEEPSTREAM_BT_PORT || "6020",
+}
+
+export { mongo, node, deepstreamConfig };

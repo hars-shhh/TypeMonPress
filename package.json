@@ -24,6 +24,7 @@
     "watch-debug": "concurrently -k -p \"[{name}]\" -n \"Sass,TypeScript,Node\" -c \"yellow.bold,cyan.bold,green.bold\" \"npm run serve-debug\""
   },
   "dependencies": {
+    "@deepstream/client": "^5.1.0",
     "acl": "^0.4.11",
     "bluebird": "^3.5.0",
     "body-parser": "^1.18.1",
